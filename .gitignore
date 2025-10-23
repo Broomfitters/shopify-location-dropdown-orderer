@@ -1,0 +1,14 @@
+# Generated icon files
+icon16.png
+icon48.png
+icon128.png
+
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# Node modules (if we add build tools later)
+node_modules/

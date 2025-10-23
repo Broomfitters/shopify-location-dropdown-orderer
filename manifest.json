@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Shopify Location Dropdown Orderer",
+  "version": "1.0.0",
+  "description": "Reorders Shopify location dropdown to show actual store locations before app locations",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://admin.shopify.com/*",
+        "https://*.myshopify.com/admin/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
