@@ -1,3 +1,6 @@
+# Distribution files
+*.zip
+
 # macOS
 .DS_Store
 
