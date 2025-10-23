@@ -16,6 +16,27 @@ This extension automatically reorders the location dropdown to display:
 
 **Works for any Shopify store!** The extension automatically detects app locations by identifying Shopify's "App" badge - no configuration needed.
 
+## Before & After
+
+<table>
+<tr>
+<th>Before</th>
+<th>After</th>
+</tr>
+<tr>
+<td>
+<img src="images/before.png" alt="Before: App locations mixed with store locations" width="400"/>
+
+App locations appear before your actual stores, making it harder to find your physical locations.
+</td>
+<td>
+<img src="images/after.png" alt="After: Store locations first, then divider, then app locations" width="400"/>
+
+Your store locations appear first, followed by a clean divider, then app locations - much easier to navigate!
+</td>
+</tr>
+</table>
+
 ## Installation
 
 ### Step 1: Generate Icons (Optional)
