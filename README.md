@@ -4,7 +4,7 @@ A Chrome extension that automatically reorders the location dropdown in Shopify 
 
 ## Problem
 
-By default, Shopify displays all locations in the order they were added, which means app-based fulfillment locations (like Printful, Printify, etc.) often appear before your actual store locations. This makes it inconvenient to quickly select your physical store locations.
+By default, Shopify mixes all locations together without separating physical stores from app-based fulfillment locations. This means app locations (like Printful, Printify, Apliiq, etc.) often appear scattered throughout or before your actual store locations, making it inconvenient to quickly find and select your physical stores.
 
 ## Solution
 
