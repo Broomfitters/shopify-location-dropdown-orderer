@@ -11,7 +11,10 @@ By default, Shopify displays all locations in the order they were added, which m
 This extension automatically reorders the location dropdown to display:
 1. "All locations" (always first)
 2. Your actual store locations (e.g., "Broomfitters / Brooklyn", "Broomfitters / Twin Cities")
-3. App-based fulfillment locations (sorted last)
+3. Visual divider line (using Polaris design system)
+4. App-based fulfillment locations (sorted last)
+
+**Works for any Shopify store!** The extension automatically detects app locations by identifying Shopify's "App" badge - no configuration needed.
 
 ## Installation
 
@@ -45,10 +48,13 @@ Icons are optional but recommended for a better visual experience.
 
 The extension uses a MutationObserver to detect when the Shopify location dropdown appears in the DOM. When detected, it:
 
-1. Identifies which locations are apps (by looking for the "App" badge)
-2. Separates actual store locations from app locations
+1. Identifies which locations are apps by detecting Shopify's `<s-internal-badge>App</s-internal-badge>` element
+2. Separates actual store locations (no badge) from app locations (with badge)
 3. Reorders the list to prioritize store locations
-4. Maintains the "All locations" option at the top
+4. Inserts a Polaris-style divider between store and app locations
+5. Maintains the "All locations" option at the top
+
+**Universal Detection:** Works on any Shopify store because it detects Shopify's standard UI components, not specific location names.
 
 ## Files
 
