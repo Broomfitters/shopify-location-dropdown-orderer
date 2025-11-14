@@ -45,11 +45,25 @@
     return divider;
   }
 
+  // Track which listboxes we're already observing
+  const observedListboxes = new WeakSet();
+
   // Function to reorder the listbox items
   function reorderLocations(listbox) {
     const items = Array.from(listbox.children);
 
     if (items.length === 0) return;
+
+    // Start observing this listbox for changes to its children (lazy loading)
+    if (!observedListboxes.has(listbox)) {
+      observedListboxes.add(listbox);
+      const listboxObserver = new MutationObserver(() => {
+        reorderLocations(listbox);
+      });
+      listboxObserver.observe(listbox, {
+        childList: true
+      });
+    }
 
     // Separate items into categories
     const allLocationsItem = items.find(item => isAllLocationsOption(item));
