@@ -45,8 +45,8 @@
     return divider;
   }
 
-  // Track which listboxes we're already observing
-  const observedListboxes = new WeakSet();
+  // Track which listboxes we're already observing (WeakMap to store observer references)
+  const observedListboxes = new WeakMap();
 
   // Function to reorder the listbox items
   function reorderLocations(listbox) {
@@ -56,10 +56,10 @@
 
     // Start observing this listbox for changes to its children (lazy loading)
     if (!observedListboxes.has(listbox)) {
-      observedListboxes.add(listbox);
       const listboxObserver = new MutationObserver(() => {
         reorderLocations(listbox);
       });
+      observedListboxes.set(listbox, listboxObserver);
       listboxObserver.observe(listbox, {
         childList: true
       });
@@ -89,6 +89,12 @@
     const newOrder = orderedItems.map(item => item.getAttribute('id')).join(',');
 
     if (currentOrder !== newOrder || existingDividers.length === 0) {
+      // Disconnect observer before making changes to prevent infinite loop
+      const observer = observedListboxes.get(listbox);
+      if (observer) {
+        observer.disconnect();
+      }
+
       // Remove all items
       items.forEach(item => item.remove());
 
@@ -104,6 +110,13 @@
       appLocations.forEach(item => listbox.appendChild(item));
 
       console.log('Shopify Location Dropdown Orderer: Reordered locations with divider');
+
+      // Reconnect observer after changes are complete
+      if (observer) {
+        observer.observe(listbox, {
+          childList: true
+        });
+      }
     }
   }
 
